@@ -12,13 +12,16 @@ jobs:
         id: action
         uses: ./
         with:
-          who-to-gree: '@wulfland'
+          who-to-gree: 'Mladen'
       
       - name: Output the answer
         run: echo "The answer is ${{ steps.action.outputs.answer }}"
       
       - name: Test the container
         if: ${{ steps.action.outputs.answer != 42 }}
+        run: |
+          echo "::error file=entrypoint.sh,line=4,title=Error in container::The answer was not expected"
+          exit 1
         run: |
           echo "::error file=entrypoint.sh,line=4,title=Error in container::The answer was not expected"
           exit 1
