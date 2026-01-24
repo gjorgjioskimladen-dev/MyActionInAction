@@ -22,7 +22,3 @@ jobs:
         run: |
           echo "::error file=entrypoint.sh,line=4,title=Error in container::The answer was not expected"
           exit 1
-        if: ${{ steps.action.outputs.answer != 42 }}
-        run: |
-          echo "::error file=entrypoint.sh,line=4,title=Error in container::The answer was not expected"
-          exit 1
